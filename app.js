@@ -11,6 +11,12 @@ mongoose.connect('mongodb://root:123@ds113700.mlab.com:13700/blog', function (er
   }
 })
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Bodyparser to read json post data
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
